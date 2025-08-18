@@ -8,3 +8,6 @@ Route::put('/documents/{id}/trash', [DocumentController::class, 'moveToTrash']);
 Route::get('/documents/trash', [DocumentController::class, 'trashed']);
 Route::put('/documents/restore/{id}', [DocumentController::class, 'restore']);
 Route::get('/trashed-documents', [DocumentController::class, 'trashed']);
+Route::get('/favorite-documents', [DocumentController::class, 'favorites']);
+Route::put('/documents/favorite/{id}', [DocumentController::class, 'favorite']);
+Route::put('/documents/unfavorite/{id}', [DocumentController::class, 'unfavorite']);

@@ -6,11 +6,17 @@ function Dashboard() {
   const [docs, setDocs] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/documents")
-      .then((res) => setDocs(res.data))
-      .catch((err) => console.log(err));
+    fetchDocuments();
   }, []);
+
+  const fetchDocuments = async () => {
+    try {
+      const res = await axios.get("http://127.0.0.1:8000/api/documents");
+      setDocs(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleTrash = async (id) => {
     try {
@@ -18,6 +24,32 @@ function Dashboard() {
       setDocs((prevDocs) => prevDocs.filter((doc) => doc.id !== id));
     } catch (error) {
       console.error("Error moving to trash:", error);
+    }
+  };
+
+  const handleAddFavorite = async (id) => {
+    try {
+      await axios.put(`http://127.0.0.1:8000/api/documents/favorite/${id}`);
+      setDocs((prevDocs) =>
+        prevDocs.map((doc) =>
+          doc.id === id ? { ...doc, is_favorite: true } : doc
+        )
+      );
+    } catch (error) {
+      console.error("Error adding to favorites:", error);
+    }
+  };
+
+  const handleRemoveFavorite = async (id) => {
+    try {
+      await axios.put(`http://127.0.0.1:8000/api/documents/unfavorite/${id}`);
+      setDocs((prevDocs) =>
+        prevDocs.map((doc) =>
+          doc.id === id ? { ...doc, is_favorite: false } : doc
+        )
+      );
+    } catch (error) {
+      console.error("Error removing from favorites:", error);
     }
   };
 
@@ -30,9 +62,13 @@ function Dashboard() {
             key={doc.id}
             id={doc.id}
             filename={doc.filename}
+            content={doc.content}
             date={doc.created_at}
-            category={doc.category}
+            isFavorite={doc.is_favorite}
             onTrash={handleTrash}
+            onFavorite={handleAddFavorite}
+            onUnfavorite={handleRemoveFavorite}
+            showRestore={true}
           />
         ))}
       </div>

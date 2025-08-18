@@ -1,38 +1,65 @@
 import React from "react";
+import { FaTrash, FaHeart, FaRegHeart } from "react-icons/fa";
 
 const DocumentCard = ({
   id,
   filename,
   content,
   date,
-  onTrash,
-  onRestore,
+  category,
+  isFavorite = false,
   isTrashed = false,
+  onTrash,
+  onFavorite,
+  onUnfavorite,
+  onRestore,
 }) => {
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      onUnfavorite && onUnfavorite(id);
+    } else {
+      onFavorite && onFavorite(id);
+    }
+  };
+
+  const handleRestoreClick = () => {
+    onRestore && onRestore(id);
+  };
+
   return (
-    <div className="bg-white shadow-md rounded-lg p-4">
-      <h3 className="text-lg font-bold  mb-2">{filename}</h3>
-      <p className="text-sm text-gray-600 mb-2">{content}</p>
-      <p className="text-xs text-gray-400">{new Date(date).toLocaleString()}</p>
-      <div className="flex justify-end mt-4">
-        {isTrashed ? (
-          <button
-            onClick={() => onRestore(id)}
-            className="text-green-600 hover:text-green-800"
-            title="Restore"
-          >
-            ♻️ Restore
+    <div className="bg-white rounded shadow-md p-4 relative">
+      <h3 className="text-lg font-semibold">{filename}</h3>
+      {category && (
+        <p className="text-sm text-gray-500 mb-1">Category: {category}</p>
+      )}
+      <p className="text-sm text-gray-500">{date}</p>
+
+      <div className="absolute top-2 right-2 flex space-x-2">
+        {(onFavorite || onUnfavorite) && !isTrashed && (
+          <button onClick={handleFavoriteClick}>
+            {isFavorite ? (
+              <FaHeart className="text-red-500" />
+            ) : (
+              <FaRegHeart className="text-gray-400" />
+            )}
           </button>
-        ) : (
-          <button
-            onClick={() => onTrash(id)}
-            className="text-red-600 hover:text-red-800"
-            title="Trash"
-          >
-            🗑️ Trash
+        )}
+
+        {onTrash && !isTrashed && (
+          <button onClick={() => onTrash(id)}>
+            <FaTrash className="text-gray-500 hover:text-red-600" />
           </button>
         )}
       </div>
+
+      {isTrashed && onRestore && (
+        <button
+          onClick={handleRestoreClick}
+          className="mt-4 text-green-600 hover:text-green-800"
+        >
+          Restore
+        </button>
+      )}
     </div>
   );
 };

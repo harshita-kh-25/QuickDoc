@@ -24,9 +24,10 @@ export default function Upload() {
         },
       });
 
-      setMessage(' Upload successful!');
+     setMessage('Upload successful!');
       setFile(null);
       setCategory('');
+      if (onUploadSuccess) onUploadSuccess();
     } catch (err) {
       console.log("Upload failed:", err);
     

@@ -79,4 +79,40 @@ public function delete($id)
     return response()->json(['message' => 'Document permanently deleted.']);
 }
 
+// Get favorite documents
+public function favorites()
+{
+    return Document::where('is_favorite', true)->get();
+}
+
+// Mark a document as favorite
+public function favorite($id)
+{
+    $document = Document::find($id);
+
+    if (!$document) {
+        return response()->json(['message' => 'Document not found.'], 404);
+    }
+
+    $document->is_favorite = true;
+    $document->save();
+
+    return response()->json(['message' => 'Marked as favorite']);
+}
+
+// Remove favorite
+public function unfavorite($id)
+{
+    $document = Document::find($id);
+
+    if (!$document) {
+        return response()->json(['message' => 'Document not found.'], 404);
+    }
+
+    $document->is_favorite = false;
+    $document->save();
+
+    return response()->json(['message' => 'Removed from favorites']);
+}
+
 }
