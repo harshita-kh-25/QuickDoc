@@ -9,6 +9,7 @@ import Upload from './assets/Upload'
 import Recent from './assets/Recent'
 import Shared from './assets/Shared'
 import Favorites from './assets/Favorites'
+import Home from './assets/HomePage/Home'
 
 
 createRoot(document.getElementById('root')).render(
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
     <Route path="/favorites" element={<Favorites />} />
     <Route path="/shared" element={<Shared />} />
     </Route>
+    <Route path='/home' element={<Home/>}/>
    </Routes>
    </BrowserRouter>
   </StrictMode>,
