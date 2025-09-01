@@ -8,13 +8,13 @@ import { IoIosArrowDown } from "react-icons/io";
 const Navbar = () => (
 <nav
   style={{ width: '80%' }}
-  className="mx-auto top-10 z-10 backdrop-filter backdrop-blur-lg  border-gray-200  bg-white/30 rounded-full"
+  className="mx-auto top-10 z-10 backdrop-filter backdrop-blur-lg  border-gray-200   rounded-full"
 >        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             {/* Left: Logo + Nav links */}
-             <div className="text-green-600 font-bold text-2xl">QuickDoc</div>
+             <div className=" font-bold text-2xl">QuickDoc</div>
             <div className="flex items-center space-x-10">
                
-                <nav className="hidden md:flex space-x-6 text-gray-700 font-medium">
+                <nav className="hidden md:flex space-x-6  font-medium">
                     <a href="#" className="hover:text-green-600">Features</a>
                     <a href="#" className="hover:text-green-600">Pricing</a>
                     <a href="#" className="hover:text-green-600">Reviews</a>

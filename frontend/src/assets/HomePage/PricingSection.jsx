@@ -49,8 +49,14 @@ const plans = [
 
 export default function PricingSection() {
   return (
-    <section className="bg-[#0F0F0F] text-white py-20 px-6">
-      <div className="text-center mb-12">
+    <section className="relative py-20 px-6 text-white">
+      {/* Background with Radial Gradient and Blue Blur */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle, rgba(3,28,60,1) 0%, rgba(0,0,0,1) 80%)] opacity-70 z-0"></div>
+      <div className="absolute inset-0 flex justify-end items-bottom pointer-events-none z-10">
+        <div className="w-[500px] h-[500px] bg-blue-700 opacity-30 rounded-full blur-[160px]" />
+      </div>
+
+      <div className="text-center mb-12 z-10">
         <h2 className="text-3xl md:text-4xl font-bold">
           Transparent Plans That <br className="hidden md:block" />
           Scale With Your Risk Need
@@ -60,7 +66,8 @@ export default function PricingSection() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {/* Pricing Plans */}
+      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto z-10">
         {plans.map((plan, index) => (
           <div
             key={index}
@@ -80,8 +87,8 @@ export default function PricingSection() {
             <button
               className={`w-full py-2 rounded-md text-sm font-medium transition ${
                 plan.popular
-                  ? 'bg-white text-black hover:bg-gray-100'
-                  : 'border border-white/20 hover:bg-white/10'
+                  ? 'bg-blue-600 text-white hover:bg-blue-700'
+                  : 'border border-white/20 hover:bg-white/10 text-white'
               }`}
             >
               Get Started Now

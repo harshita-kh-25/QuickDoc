@@ -4,7 +4,7 @@ export default function CallToAction() {
   return (
     <section className="relative bg-black text-white py-28 px-4 text-center overflow-hidden">
       {/* Full-screen glowing background */}
-      <div className="absolute inset-0 flex justify-center items-start pointer-events-none z-0">
+      <div className="absolute inset-0 flex justify-center items-end pointer-events-none z-0">
         <div className="w-[500px] h-[500px] bg-blue-700 opacity-30 rounded-full blur-[160px] mt-[-100px]" />
       </div>
 

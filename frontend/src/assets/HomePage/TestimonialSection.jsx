@@ -46,7 +46,12 @@ const testimonials = [
 
 export default function TestimonialSection() {
   return (
-    <section className="bg-[#0F0F0F] text-white py-20 px-4">
+    <section className="bg-[#0F0F0F] text-white py-20 px-4 relative">
+       {/* Background with Radial Gradient and Blue Blur */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle, rgba(3,28,60,1) 0%, rgba(0,0,0,1) 80%)] opacity-70 z-0"></div>
+      <div className="absolute inset-0 flex justify-center items-top pointer-events-none z-10">
+        <div className="w-[300px] h-[300px] bg-blue-700 opacity-30 rounded-full blur-[160px]" />
+      </div>
       <div className="max-w-4xl mx-auto text-center mb-12">
         <span className="bg-gray-800 text-gray-300 text-xs uppercase px-3 py-1 rounded-full tracking-wider">
           Testimonial

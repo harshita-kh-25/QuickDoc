@@ -2,20 +2,19 @@ import Navbar from "./Navbar";
 
 const HeroBanner = () => {
   return (
-    <section className="w-full py-8 px-6 bg-gradient-to-r from-green-200 via-blue-100 to-purple-200">
+    <section className="relative w-full py-10 text-white ">
+     
       {/* Navbar at top */}
       <Navbar />
 
-      <div className="max-w-6xl mx-auto text-center">
-
-
+      <div className="max-w-6xl mx-auto text-center z-10 relative">
         {/* Heading */}
         <h1 className="text-4xl md:text-6xl font-extrabold leading-tight py-4 pb-10">
           The Ultimate Documents <br /> Management App
         </h1>
 
         {/* Subheading */}
-        <p className="text-gray-600 max-w-xl mx-auto mb-2">
+        <p className=" max-w-xl mx-auto mb-2">
           Empowering you to take charge of your financial future with intuitive tools and personalized insights.
         </p>
 
@@ -29,43 +28,41 @@ const HeroBanner = () => {
           </button>
         </div>
 
+        {/* Tilted Image Section with Modern Shadow */}
+        <div className="relative flex justify-center items-center mt-10" style={{ perspective: "2000px" }}>
+           {/* Background Gradient with Blur */}
+      <div className="absolute inset-0 bg-gradient-radial from-[#031c3c] via-[#0F0F0F] to-[#0F0F0F] opacity-80 z-0 top-[100px]"></div>
 
-
-        <div className="w-full py-1 px-6  flex justify-center items-center" >
-          <div className="relative" style={{ perspective: "2500px" }}>
-            {/* Main Tilted Image */}
-            <img
-              src="/dashboard.png"
-              alt="App Preview"
-              className="rounded-2xl shadow-2xl border border-gray-200"
-              style={{
-                transform: "rotateX(18deg) scale(0.95)", // tilt + thoda zoom out
-                transformOrigin: "center bottom", // neeche se tilt
-                boxShadow: "0px 15px 40px rgba(0,0,0,0.25)", // outline shadow
-                backfaceVisibility: "hidden", // extra side na dikhe
-              }}
-            />
-
-            {/* ---- Realistic Multi-Layer Shadow ---- */}
-            {/* Inner Dark Shadow (close to screen) */}
-            <div
-              className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[65%] h-8 bg-black/30 blur-lg rounded-full"
-              style={{ transform: "rotateX(75deg)" }}
-            />
-
-            {/* Outer Soft Shadow (spread out) */}
-            <div
-              className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[85%] h-12 bg-black/10 blur-2xl rounded-full"
-              style={{ transform: "rotateX(75deg)" }}
-            />
-          </div>
-        </div>
-        
-
+      {/* Radial Blur Effect */}
+      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10">
+        <div className="w-[1500px] h-[800px] bg-blue-700 opacity-30 rounded-full blur-[160px]" />
       </div>
 
-    </section>
+          {/* Main Tilted Image */}
+          <img
+            src="/dashboard.png"
+            alt="App Preview"
+            className="rounded-2xl shadow-2xl border border-gray-800 relative z-10"
+            style={{
+              transform: "rotateX(12deg) scale(0.96)",
+              transformOrigin: "center bottom",
+              backfaceVisibility: "hidden",
+            }}
+          />
 
+          {/* Elliptical Stage Shadow 
+          <div
+            className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 w-[70%] h-12 rounded-full blur-3xl"
+            style={{
+              background: "radial-gradient(ellipse at center, rgba(255, 255, 255, 0.84) 0%, rgba(189, 59, 59, 0) )",
+             
+            }} 
+          />*/}
+        </div>
+
+      </div>
+    </section>
   );
 };
+
 export default HeroBanner;
