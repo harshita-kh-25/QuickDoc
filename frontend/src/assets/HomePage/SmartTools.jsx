@@ -1,40 +1,98 @@
 import React from "react";
 
 const SmartTools = () => {
+    const features = [
+        {
+            title: "Spending Habits",
+            desc: "Analyze your spending patterns and receive tips to cut",
+            icon: "🧠",
+        },
+        {
+            title: "Stress-Free Budgeting",
+            desc: "Set and maintain budgets effortlessly, with automated tracking",
+            icon: "📊",
+        },
+        {
+            title: "Real-Time Alerts",
+            desc: "Get instant notifications on transactions, balances and bills",
+            icon: "🔔",
+        },
+        {
+            title: "Goal Achievement",
+            desc: "Set financial goals and monitor your progress with updates",
+            icon: "🎯",
+        },
+        {
+            title: "Financial Confidence",
+            desc: "Make informed financial decisions with detailed analytics",
+            icon: "📈",
+        },
+        {
+            title: "Financial Anxiety",
+            desc: "Feel more in control of your money with tools that simplify",
+            icon: "😌",
+        },
+    ];
+
     return (
-        <section className="relative py-16   overflow-hidden">
+        <section className="relative py-16 overflow-hidden text-white">
             {/* Header */}
             <div className="text-center mt-16 px-4">
-
-                <h2 className="text-4xl md:text-[48px] font-bold mt-2">
+                <h2 className="text-3xl md:text-[48px] font-bold mt-2">
                     Tools for Smarter Management
                 </h2>
-                <p className=" mt-3 max-w-2xl mx-auto">
+                <p className="mt-3 max-w-2xl mx-auto text-sm md:text-base ">
                     Empowering you to take charge of your financial future with intuitive
                     tools and personalized insights.
                 </p>
             </div>
 
-            {/* Circular layout */}
-            <div className="relative flex justify-center items-center h-[900px]">
+            {/* --------- Mobile Layout (Modern Grid Tiles) --------- */}
+            <div className="md:hidden mt-10 px-6 text-white">
+                {/* Phone Image */}
+                <div className="flex justify-center mb-2">
+                    <img
+                        src="/banner.png"
+                        alt="Phone"
+                        className="w-76 h-auto object-contain"
+                    />
+                </div>
+
+                {/* Features Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-white">
+                    {features.map((item, index) => (
+                        <div
+                            key={index}
+                            className=" bg-[#1c1c1c] backdrop-blur-md shadow-md border border-white/20 rounded-2xl p-6 hover:shadow-xl transition-all"
+                        >
+                            <div className="flex items-center gap-x-2 text-2xl mb-2">
+                                {item.icon}
+                                <h3 className="font-semibold text-base">{item.title}</h3>
+                            </div>
+
+                            <p className="text-sm  mt-1 leading-relaxed">
+                                {item.desc}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* --------- Desktop Layout (Unchanged) --------- */}
+            <div className="hidden md:flex relative justify-center items-center h-[900px] mt-10">
                 {/* Outer Dashed Circle */}
                 <div className="absolute w-[700px] h-[700px] rounded-full border-2 border-dashed border-gray-300"></div>
 
                 {/* Phone Image */}
                 <div className="relative w-[376px] h-[729px] z-10 overflow-hidden">
-                    {/* Phone Image */}
                     <img
                         src="/banner.png"
                         alt="Phone"
                         className="w-full h-full object-cover"
                     />
-
-                    {/* Modern white fade overlay */}
-                    
                 </div>
 
-
-                {/* Positioned Items */}
+                {/* Text Blocks */}
                 <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
                     {/* Top-left */}
                     <div className="absolute top-[140px] left-80  w-48 text-right">
@@ -85,7 +143,6 @@ const SmartTools = () => {
                     </div>
 
 
-                    {/* Dots around the circle */}
                     <div className="top-0 left-0 w-full h-full flex justify-center items-center ">
                         {/* Top-left dot (Spending Habits) */}
                         <div
@@ -126,7 +183,6 @@ const SmartTools = () => {
 
                 </div>
             </div>
-
         </section>
     );
 };

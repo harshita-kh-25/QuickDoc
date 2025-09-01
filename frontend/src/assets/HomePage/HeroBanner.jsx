@@ -1,11 +1,10 @@
-import Navbar from "./Navbar";
 
 const HeroBanner = () => {
   return (
     <section className="relative w-full py-10 text-white ">
      
       {/* Navbar at top */}
-      <Navbar />
+      
 
       <div className="max-w-6xl mx-auto text-center z-10 relative">
         {/* Heading */}
